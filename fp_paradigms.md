@@ -123,10 +123,19 @@ By: Patrick `java.lang.IndexOutOfBoundsException`
 - Arrow functions in JavaScript (3/10 naming)
 
 ```ts
-const func1 = (x) => x === `Hello, ${x}`;
-const func2 = (x) => x === `Hey, ${x}!`;
+const func1 = (x) => {
+  return `Hello, ${x}`;
+};
+const func2 = (x) => {
+  return `Hey, ${x}!`;
+};
 
-const chosenFunc = isOdd(31) ? func1 : func2;
+let chosenFunc;
+if (isOdd(31)) {
+  chosenFunc = func1;
+} else {
+  chosenFunc = func1;
+}
 
 const greeting = chosenFunc("World?");
 
