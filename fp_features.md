@@ -4,6 +4,18 @@ paginate: true
 theme: default
 ---
 
+<style>
+  p:has(> img,svg) {
+    max-height: 60%;
+    display: block;
+  }
+  img,svg {
+    display: block;
+    margin: auto;
+    max-height: 100%;
+  }
+</style>
+
 ```java
 public class Main {
 
@@ -37,16 +49,17 @@ public class Main {
 <!--
 * A rather annoying bug
 * For bonus points - what happens if we swap those last two lines, and called "first:" after "last:" instead of before?
+* Let's walk through it, and understand why I don't like it
 -->
 
 ---
 
-# **Fun**ctional Programming Paradigms
+# **Fun**ctional Programming Features
 
 By: Patrick `java.lang.IndexOutOfBoundsException`
 
 <!--
-* Hi, I'm Patrick java dot lang dot index out of bounds exception, and I'm here to put the fun back into functional programming paradigms
+* Hi, I'm Patrick java dot lang dot index out of bounds exception, and I'm here to put the fun back into functional programming
 * Actually, the fun was always there, I'm just pointing it out
 
 * Now this talk comes with a disclaimer. There are some really hardcore functional programming nerds out there
@@ -54,6 +67,93 @@ By: Patrick `java.lang.IndexOutOfBoundsException`
 * If this happens, I apologise, but it shouldn't impact the key takeaways for today.
 
 * So, with my bulletproof disclaimer out of the way, let's get into it
+-->
+
+---
+
+# What is a programming paradigm?
+
+<!--
+Audience participation!
+-->
+
+---
+
+```ts
+type User = {
+  firstName: string;
+  lastName: string;
+};
+
+function getFullName(user: User) {
+  return user.firstName + " " + user.lastName;
+}
+
+const user: User = {
+  firstName: "Patrick",
+  lastName: "Gregory",
+};
+
+console.log(getFullName(user)); // Patrick Gregory
+```
+
+---
+
+```ts
+class User {
+  firstName: string;
+  lastName: string;
+
+  getFullName() {
+    return this.firstName + " " + this.lastName;
+  }
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+
+const user = new User("Patrick", "Gregory");
+
+console.log(user.getFullName()); // Patrick Gregory
+```
+
+---
+
+## Imperative Paradigms
+
+> Give the computer _instructions_
+
+- Procedural
+- Object Oriented Programming (OOP)
+
+---
+
+## Declarative Paradigms
+
+> Describe _what_ to do, not _how_ to do it
+
+- Reactive
+- **_Functional_**
+
+---
+
+<!-- prettier-ignore -->
+* Functional Programming Languages
+  ![](images/fp-languages.svg)
+* Multi-Paradigm Languages 
+  ![](images/mp-languages.svg)
+
+<!--
+* There are languages out there that are basically "functional-first" languages. Some are more pure than others
+* Up here we've got haskell, ocaml, and clojure which are all popular... for a functional programming language
+
+* But just because we're not using one of these languages donsn't mean we can't take advantage of functional programming features
+* Pretty much all of the languages we use have functional "inspired" features, even though they're not functional programming languages
+
+* We call this multi-paradigm, and the reason it's so common is that it lets you program in the way that you want
+* So let's take a look at some features that come from functional programming, and figure out why and where we can use them.
 -->
 
 ---
@@ -90,57 +190,58 @@ By: Patrick `java.lang.IndexOutOfBoundsException`
 * I think it's good to be aware that there is some very pure maths underpinning functional programming
 * And to point out that there is more to learn here if you're curious
 
-* Today, however, we're going to be looking at how we can apply functional programming paradigms to our everyday work
+* Today, however, we're going to be looking at how we can apply functional programming features to our everyday work
 * So let's talk about programming languages for one slide
 -->
 
 ---
 
-<!-- prettier-ignore -->
-* Functional Programming Languages
-  ![](images/fp-languages.svg)
-* Multi-Paradigm Languages 
-  ![](images/mp-languages.svg)
+# Shotgun Buffet
+
+![Shotgun Buffet](images/shotgun-buffet.png) https://youtu.be/aolI_Rz0ZqY
+
+---
+
+# Lambdas
+
+- Python `lambda foo: foo + 1`
+- JS `(foo) => foo + 1`
+- Java `(foo: Integer) -> foo + 1`
+- Rust `|foo| foo + 1`
+
+---
+
+## Closures
+
+- Lambdas are anonymous functions
+- Closures "close over" their environment
+
+```ts
+let myLambda: (x: number) => string;
+
+{
+  const someNumber = 5;
+  myLambda = (x: number) => {
+    return "Provided " + x + " Captured " + someNumber;
+  };
+}
+
+console.log(myLambda(4)); // Provided 4 Captured 5
+//console.log(someNumber); // out of scope
+```
 
 <!--
-* There are languages out there that are basically "functional-first" languages. Some are more pure than others
-* Up here we've got haskell, ocaml, and clojure which are all popular... for a functional programming language
-
-* But just because we're not using one of these languages donsn't mean we can't take advantage of functional programming features
-* Pretty much all of the languages we use have functional "inspired" features, even though they're not functional programming languages
-
-* We call this multi-paradigm, and the reason it's so common is that it lets you program in the way that you want
-* So let's take a look at some features that come from functional programming, and figure out why and where we can use them.
+Closures are a subset of lambdas, in that they can use variables not defined in their scope.
+These variables are "captured"
 -->
 
 ---
 
-## Functions as First-Class Citizens
+# Functions as First-Class Citizens
 
-- Get to pass functions around!
-- `Function<T,V>` and `@FunctionalInterface` in Java
-- Lambdas in python (10/10 naming)
-- Arrow functions in JavaScript (3/10 naming)
+> Treat functions like any other data
 
-```ts
-const func1 = (x) => {
-  return `Hello, ${x}`;
-};
-const func2 = (x) => {
-  return `Hey, ${x}!`;
-};
-
-let chosenFunc;
-if (isOdd(31)) {
-  chosenFunc = func1;
-} else {
-  chosenFunc = func1;
-}
-
-const greeting = chosenFunc("World?");
-
-console.log(greeting); // Hello, World?
-```
+![First-Class Citizen](images/first-class-citizen.png)
 
 <!--
 First up, we have the cornerstone of functional programming, which that we're able to treat functions like data.
@@ -159,22 +260,7 @@ This leads directly into the next feature, higher order functions.
 
 ## Higher-Order Functions
 
-Functions that take other functions, or return functions
-
-```ts
-function generateFunc(oddOrEven: "odd" | "even"): (input: number) => boolean {
-  if (oddOrEven === "odd") {
-    return (n) => n % 2 === 1;
-  } else {
-    return (n) => n % 2 === 0;
-  }
-}
-
-const isOdd = generateFunc("odd");
-const isTenOdd = isOdd(10); // false
-// or
-const isTenEven = generateFunc("even")(10); // true
-```
+> Functions that take other functions, or return functions
 
 <!--
 * For those following along with the lambda calculus, this last line is an example of "currying" I would also recommend you STOP FOLLOWING ALONG WITH THE LAMBDA CALCULUS
