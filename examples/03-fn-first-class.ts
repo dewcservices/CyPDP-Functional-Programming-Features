@@ -1,6 +1,6 @@
 export {};
 
-function isOdd(x: number) {
+function isOdd(x: number): boolean {
   return Number.isInteger(x) && x % 2 === 1;
 }
 

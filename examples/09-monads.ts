@@ -8,7 +8,7 @@ console.log("standard double 4 = ", double(4));
 console.log("standard double 5 = ", double(5));
 
 // Doesn't work!
-//console.log("double null = "double(null));
+//console.log("double null = ", double(null));
 
 class MaybeNumber {
   private _theValue: number | null;
@@ -30,28 +30,26 @@ class MaybeNumber {
 
   // TODO: complete the "maybeNumber" monad class
   doIfPresent(action: (value: number) => void): void {
-    // TODO
+    //
   }
 
-  getOrDefault(defaultTo: number): number {
-    // TODO
-    return 0;
-  }
+  // TODO
+  //map(mappingFunction: (value: number) => number): MaybeNumber {
+  //}
 
-  map(mappingFunction: (value: number) => number): MaybeNumber {
-    // TODO
-    return MaybeNumber.empty();
-  }
+  // TODO
+  //getOrDefault(defaultTo: number): number {
+  //}
+}
+
+function gauntlet(val: MaybeNumber) {
+  val.doIfPresent((value) => console.log("Present and ", value));
+  //const mappedVal = val.map((value) => value * 2);
+  //const extracted = mappedVal.getOrDefault(0);
+  //console.log("Extracted: ", extracted);
 }
 
 const myMaybe1 = MaybeNumber.empty();
-myMaybe1.doIfPresent((value) => console.log(value));
-const myMapped1 = myMaybe1.map((value) => value * 2);
-const myExtracted1 = myMapped1.getOrDefault(0);
-console.log("myExtracted 1: ", myExtracted1);
-
 const myMaybe2 = MaybeNumber.from(42);
-myMaybe2.doIfPresent((value) => console.log(value));
-const myMapped2 = myMaybe2.map((value) => value * 2);
-const myExtracted2 = myMapped2.getOrDefault(0);
-console.log("myExtracted 2: ", myExtracted2);
+gauntlet(myMaybe1);
+gauntlet(myMaybe2);

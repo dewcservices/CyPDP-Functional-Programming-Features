@@ -10,7 +10,7 @@ function uppercaseFirstName(user: User): void {
   user.first = user.first.toUpperCase();
 }
 
-let user: User = {
+const user: User = {
   first: "Walter",
   last: "White",
 };
