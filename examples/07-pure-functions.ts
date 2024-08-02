@@ -15,7 +15,9 @@ for (let x = 0; x < 10; x++) {
   console.log(currentNum);
 }
 
-// Alternatively:
+// *************
+// Alternatively
+// *************
 
 type State = {
   num: number;

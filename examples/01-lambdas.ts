@@ -1,7 +1,7 @@
 export {};
 
 // Here's a lambda:
-(val: number) => val * 2;
+(val: number) => val * 2 
 
 // Now use it to compute 5 * 2
 const fiveTimesTwo = 10; // TODO

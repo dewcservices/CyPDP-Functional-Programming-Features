@@ -11,6 +11,6 @@ console.log("Is 10 odd?", isOdd(10));
 console.log("Is 10 even?", generateFunc("even")(10));
 
 // TODO: create an "isPossiblyIsOdd" function
-// Should return true if the supplied function "seems" to behave like isOdd
-//function isPossiblyIsOdd(inputFunc: /* ? */) => boolean): boolean {
+//Should return true if the supplied function "seems" to behave like isOdd
+//function isPossiblyIsOdd(inputFunc: /* ?? */): boolean {
 //}

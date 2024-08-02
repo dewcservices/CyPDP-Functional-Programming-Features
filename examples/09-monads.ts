@@ -1,15 +1,5 @@
 export {};
 
-function double(value: number): number {
-  return value * 2;
-}
-
-console.log("standard double 4 = ", double(4));
-console.log("standard double 5 = ", double(5));
-
-// Doesn't work!
-//console.log("double null = ", double(null));
-
 class MaybeNumber {
   private _theValue: number | null;
 
@@ -45,6 +35,7 @@ class MaybeNumber {
 function gauntlet(val: MaybeNumber) {
   val.doIfPresent((value) => console.log("Present and ", value));
   //const mappedVal = val.map((value) => value * 2);
+  //mappedVal.doIfPresent((value) => console.log("Mapped to ", value));
   //const extracted = mappedVal.getOrDefault(0);
   //console.log("Extracted: ", extracted);
 }
