@@ -10,8 +10,8 @@ let myLambda: (x: number) => string;
   };
 }
 
-// What is the variable 'myLambda' here?
-// What is the variable 'someNumber' here?
+// What is the variable 'someNumber' here? | It's not in-scope
+// What is the variable 'myLambda' here? | It's defined as above
 
-// TODO: predict
+// TODO: predict | Provided [2] Captured[5]
 console.log(myLambda(2));

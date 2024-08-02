@@ -5,9 +5,8 @@ type User = {
   last: string;
 };
 
-// TODO Don't mutate
-function uppercaseFirstName(user: User): void {
-  user.first = user.first.toUpperCase();
+function uppercaseFirstName(user: User): string {
+   return user.first.toUpperCase();
 }
 
 const user: User = {
@@ -16,6 +15,6 @@ const user: User = {
 };
 
 console.log(user.first);
-// user changes during this call, but it might not be obvious
-uppercaseFirstName(user);
+// user no longer changes during this call
+console.log(uppercaseFirstName(user));
 console.log(user.first);

@@ -8,5 +8,8 @@ function asInteger(val: string): number | null {
 
 const myValues = ["12", "birthday cake", "17.2", "Hello, World!"];
 
-//const intValues = 
-//console.log(intValues);
+const intValues = myValues.flatMap((value) => {
+  const intVal = asInteger(value);
+  return intVal === null ? [] : [intVal];
+});
+console.log(intValues);

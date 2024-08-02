@@ -14,6 +14,10 @@ const func2 = (x: string) => {
 
 let chosenFunc: (x: string) => string;
 
-// TODO: Assign chosenFunc based on some condition
+if(isOdd(42)) {
+  chosenFunc = func1;
+} else {
+  chosenFunc = func2;
+}
 
-//console.log(chosenFunc("World?"));
+console.log(chosenFunc("World?"));
