@@ -1,21 +1,23 @@
 export {};
 
 class MaybeNumber {
-  private _theValue: number | null;
+  private _isPresent: boolean;
+  private _theValue: number;
 
   // private constructor!
-  private constructor(value: number | null) {
+  private constructor(isPresent: boolean, value: number) {
+    this._isPresent = isPresent;
     this._theValue = value;
   }
   static empty(): MaybeNumber {
-    return new MaybeNumber(null);
+    return new MaybeNumber(false, 0);
   }
   static from(value: number): MaybeNumber {
-    return new MaybeNumber(value);
+    return new MaybeNumber(true, value);
   }
 
-  isPresent() {
-    return this._theValue !== null;
+  get isPresent() {
+    return this._isPresent;
   }
 
   // TODO: complete the "maybeNumber" monad class
