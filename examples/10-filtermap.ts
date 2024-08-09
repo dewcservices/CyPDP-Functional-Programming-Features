@@ -1,12 +1,14 @@
 export {};
+import { MaybeNumber } from "./09-monads";
 
-// Just a slightly more typed form of parseInt
-function asInteger(val: string): number | null {
-  const intVal = Number.parseInt(val, 10);
-  return Number.isNaN(intVal) ? null : intVal;
-}
+const myValues = [
+  MaybeNumber.from(12),
+  MaybeNumber.empty(),
+  MaybeNumber.from(0),
+  MaybeNumber.from(9999),
+];
 
-const myValues = ["12", "birthday cake", "17.2", "Hello, World!"];
-
-//const intValues = 
-//console.log(intValues);
+const intValues = myValues
+  .filter((maybeNum) => maybeNum.isPresent)
+  .map((maybeNum) => maybeNum.getOrDefault(-1));
+console.log(intValues);

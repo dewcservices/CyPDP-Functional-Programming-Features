@@ -113,7 +113,6 @@ console.log(user.getFullName()); // Patrick Gregory
 
 > Describe _what_ to do, not _how_ to do it
 
-- Reactive
 - **_Functional_**
 
 ---
@@ -246,24 +245,26 @@ console.log(user.greet("Hello")); // Hello, Stacy.
 
 ## Immutability
 
-Data doesn't change once assigned
+> Data doesn't change once assigned
 
 ---
 
 ## Pure Functions
 
-No side-effects
+> No side-effects
 
 ---
 
 ## Iterators / Iterables
 
-Like arrays, but more general
+> Like arrays, but more general
 
 ---
 
 ## Monads
 
-The boogeyman of functional programming
+> The boogeyman of functional programming
 
 ---
+
+## The Missing Feature
