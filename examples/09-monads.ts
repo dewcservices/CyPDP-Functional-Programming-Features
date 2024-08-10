@@ -19,7 +19,8 @@ export class MaybeNumber {
   }
 
   // TODO: complete the "maybeNumber" monad class
-  doIfPresent(action: (value: number) => void): void {
+  doIfPresent(action: (value: number) => void): MaybeNumber {
+    return {} as any;
     //
   }
 
