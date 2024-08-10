@@ -2,6 +2,10 @@ export {};
 
 // Your mission: Complete the LazyIterator monad
 
+// Why? Because without lazy iterators, doing
+// const val = [1,2,3].map(expensiveFn)[0]
+// Applies expensiveFn to all elements, only to throw most out
+// If we can evaluate things lazily, we can only request the required elements
 class LazyIterator {
   private _values: number[];
 
