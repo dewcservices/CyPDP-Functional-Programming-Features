@@ -22,11 +22,12 @@ public class Main {
   /** Returns the first string in the array with the provided prefix. Also trims the prefix. */
   private static String getFromPrefix(ArrayList<String> names, String prefix) {
 
-    // Iterate backwards since we are filtering items out and changing their positions
-    for(int i = names.size() - 1; i >= 0; i--) {
+    for(int i = 0; i < names.size(); i++) {
       // Filter our all non-prefix strings
       if(!names.get(i).startsWith(prefix)) {
         names.remove(i);
+        // Account for the index being thrown off
+        i = i - 1;
       }
     }
 
@@ -40,6 +41,7 @@ public class Main {
         "last:Gregory"
     ));
 
+    // Print name for the title card
     System.out.println(Main.getFromPrefix(names, "first:"));
     System.out.println(Main.getFromPrefix(names, "last:")); // Throws IndexOutOfBoundsException!
   }
