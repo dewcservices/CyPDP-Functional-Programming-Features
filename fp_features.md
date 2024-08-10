@@ -146,15 +146,23 @@ console.log(user.getFullName()); // Patrick Gregory
 
 # Roadmap
 
+- Functions as First-Class Citizens
 - Lambdas
 - Closures
-- Functions as First-Class Citizens
 - Higher-Order Functions
 - Immutability
 - Pure Functions
 - Iterators
 - Monads
 - Implementing a Missing Feature
+
+---
+
+## Functions as First-Class Citizens
+
+> Treat functions like any other data
+
+![First-Class Citizen](images/first-class-citizen.png)
 
 ---
 
@@ -171,14 +179,6 @@ console.log(user.getFullName()); // Patrick Gregory
 ## Closures
 
 > "Close Over" Their Environment
-
----
-
-## Functions as First-Class Citizens
-
-> Treat functions like any other data
-
-![First-Class Citizen](images/first-class-citizen.png)
 
 ---
 
