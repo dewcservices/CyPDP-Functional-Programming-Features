@@ -4,8 +4,6 @@
     "ts-node": "^10.9.2"
   },
   "scripts": {
-    "serve": "marp --preview fp_features.md",
-    "build": "marp fp_features.md",
     "1": "ts-node examples/01*.ts",
     "2": "ts-node examples/02*.ts",
     "3": "ts-node examples/03*.ts",
@@ -15,7 +13,10 @@
     "7": "ts-node examples/07*.ts",
     "8": "ts-node examples/08*.ts",
     "9": "ts-node examples/09*.ts",
-    "10": "ts-node examples/10*.ts"
+    "10": "ts-node examples/10*.ts",
+    "11": "ts-node examples/11*.ts",
+    "serve": "marp --preview fp_features.md",
+    "build": "marp fp_features.md"
   },
   "devDependencies": {
     "@types/is-odd": "^3.0.4",

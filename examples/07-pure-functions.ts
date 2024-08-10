@@ -2,6 +2,7 @@ export {};
 
 let increase = 5;
 
+// TODO: What impurities are there?
 function getNextNum(lastNum: number): number {
   // Increase `increase` by 0-9ms
   increase += Math.round(Math.random() * 10);

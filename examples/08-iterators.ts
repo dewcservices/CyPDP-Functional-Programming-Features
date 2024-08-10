@@ -17,7 +17,10 @@ console.log("Letter Counts: ", letterCounts);
 //console.log("Reversed: ", reversedList);
 
 // TODO: write a better version of reversing
-//const betterReversed =
-//console.log("Reversed (better): ", betterReversed);
+const betterReversed = myList.reduce(
+  (acc, word) => [word, ...acc],
+  [] as string[],
+);
+console.log("Reversed (better): ", betterReversed);
 
 console.log("Ending with:   ", myList);

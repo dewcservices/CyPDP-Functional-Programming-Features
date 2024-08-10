@@ -5,10 +5,10 @@ function isOdd(x: number): boolean {
 }
 
 // Define two different functions, and assign them to variables
-const func1 = (x: string) => {
+function func1(x: string): string {
   return `Hello, ${x}`;
 };
-const func2 = (x: string) => {
+function func2(x: string): string {
   return `Hey, ${x}!`;
 };
 

@@ -1,6 +1,4 @@
-export {};
-
-class MaybeNumber {
+export class MaybeNumber {
   private _isPresent: boolean;
   private _theValue: number;
 
@@ -42,20 +40,27 @@ class MaybeNumber {
       return defaultTo;
     }
   }
+
+  toArray(): number[] {
+    if (this.isPresent) {
+      return [this._theValue];
+    } else {
+      return [];
+    }
+  }
 }
 
-function gauntlet(val: MaybeNumber) {
-  val.doIfPresent((value) => console.log("Present and", value));
-  const mappedVal = val.map((value) => value * 2);
-  mappedVal.doIfPresent((value) => console.log("Mapped to", value));
-  const extracted = mappedVal.map((value) => value + 10).getOrDefault(0);
-  console.log("Extracted", extracted);
+if (require.main === module) {
+  function gauntlet(val: MaybeNumber) {
+    val.doIfPresent((value) => console.log("Present and ", value));
+    const mappedVal = val.map((value) => value * 2);
+    mappedVal.doIfPresent((value) => console.log("Mapped to ", value));
+    const extracted = mappedVal.getOrDefault(0);
+    console.log("Extracted: ", extracted);
+  }
+
+  const myMaybe1 = MaybeNumber.empty();
+  const myMaybe2 = MaybeNumber.from(42);
+  gauntlet(myMaybe1);
+  gauntlet(myMaybe2);
 }
-
-const myMaybe1 = MaybeNumber.empty();
-const myMaybe2 = MaybeNumber.from(42);
-console.log("Running empty through:")
-gauntlet(myMaybe1);
-
-console.log("Running 42 through:")
-gauntlet(myMaybe2);
