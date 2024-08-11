@@ -42,7 +42,7 @@ function getNextNum2(
 let randomDeltaFn = () => Math.round(Math.random() * 10);
 
 let state: State = {
-  delta: 5,
+  delta: 0,
   num: 10,
 };
 
