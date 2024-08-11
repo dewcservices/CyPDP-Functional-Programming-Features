@@ -1,12 +1,12 @@
 export {};
 
-let increase = 5;
+let DELTA = 0;
 
 // TODO: What impurities are there?
 function getNextNum(lastNum: number): number {
-  // Increase `increase` by 0-9ms
-  increase += Math.round(Math.random() * 10);
-  return lastNum + increase;
+  // Increase `DELTA` by 0-9ms
+  DELTA += Math.round(Math.random() * 10);
+  return lastNum + DELTA;
 }
 
 // testable??
@@ -22,31 +22,31 @@ for (let x = 0; x < 10; x++) {
 
 type State = {
   num: number;
-  increase: number;
+  delta: number;
 };
 
 function getNextNum2(
   currentState: State,
-  // Let the user provide the "increase" logic
-  updateIncreaseFn: () => number,
+  // Let the user provide the "delta" logic
+  addToDeltaFn: () => number,
   // We return all the information that needs to be updated
 ): State {
-  const nextIncrease = currentState.increase + updateIncreaseFn();
+  const nextDelta = currentState.delta + addToDeltaFn();
   return {
-    increase: nextIncrease,
-    num: currentState.num + nextIncrease,
+    delta: nextDelta,
+    num: currentState.num + nextDelta,
   };
 }
 
 // We don't HAVE to use random... But we CAN if we want
-let increaseFn = () => Math.round(Math.random() * 10);
+let randomDeltaFn = () => Math.round(Math.random() * 10);
 
 let state: State = {
-  increase: 5,
+  delta: 5,
   num: 10,
 };
 
 for (let x = 0; x < 10; x++) {
-  state = getNextNum2(state, increaseFn);
+  state = getNextNum2(state, randomDeltaFn);
   console.log(state.num);
 }
