@@ -1,14 +1,16 @@
 export {};
-import { MaybeNumber } from "./09-monads";
+import { MaybeNumber } from "./08-monads";
 
-const myValues = [
-  MaybeNumber.from(12),
-  MaybeNumber.empty(),
-  MaybeNumber.from(0),
-  MaybeNumber.from(9999),
-];
+function sqrt(v: number): number | null {
+  // Don't deal with negative values
+  if (v <= 0) {
+    return null;
+  } else {
+    return Math.sqrt(v);
+  }
+}
 
-const intValues = myValues
-  .filter((maybeNum) => maybeNum.isPresent)
-  .map((maybeNum) => maybeNum.getOrDefault(-1));
-console.log(intValues);
+const myValues = [1, 2, -12, 25];
+
+const sqrtValues = myValues.map(sqrt);
+console.log(sqrtValues);

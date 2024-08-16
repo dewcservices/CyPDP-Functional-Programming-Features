@@ -142,7 +142,7 @@ console.log(user.getFullName()); // Patrick Gregory
   \lambda xy.x^2+y \equiv
   \lambda x.(\lambda y.x^2+y)
   $$
-- It's too late to go to a different workshop now
+- The ansible workshop is full you're stuck with me
 
 ---
 
@@ -270,3 +270,7 @@ console.log(user.greet("Hello")); // Hello, Stacy.
 ---
 
 ## The Missing Feature
+
+---
+
+## Extra Work
