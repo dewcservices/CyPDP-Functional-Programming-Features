@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@marp-team/marp-cli": "^3.4.0",
+    "@marp-team/marp-cli": "^4.2.3",
     "ts-node": "^10.9.2"
   },
   "scripts": {
