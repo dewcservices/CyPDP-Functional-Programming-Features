@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "@types/is-odd": "^3.0.4",
-    "prettier": "^3.3.3"
+    "prettier": "^3.6.2"
   }
 }
